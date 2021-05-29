@@ -12,6 +12,8 @@ type State = {
   categories: string[]
   category: string
   name: string
+  firstName: string
+  lastName: string
   dispatch: React.Dispatch<any>
   getCategory: (e: React.ChangeEvent<HTMLSelectElement>) => void
   getName: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -29,6 +31,8 @@ const initialState: State = {
   categories: [],
   category: '',
   name: '',
+  firstName: 'Chuck',
+  lastName: 'Norris',
   dispatch: () => {},
   getCategory: () => {},
   getName: () => {},
@@ -50,6 +54,8 @@ function reducer(state: State = initialState, action: Action) {
         ...state,
         isLoading: false,
         name: action.payload,
+        firstName: action.payload.split(' ')[0],
+        lastName: action.payload.split(' ')[1],
       }
 
     default:
@@ -59,9 +65,13 @@ function reducer(state: State = initialState, action: Action) {
 
 const ContextProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
-
-  const endpoint = 'http://api.icndb.com/jokes/random'
   const categoriesEndpoint = 'http://api.icndb.com/categories'
+  let endpoint = ''
+  if (state.category === '') {
+    endpoint += `https://api.icndb.com/jokes/random?firstName=${state.firstName}&lastName=${state.lastName}`
+  } else {
+    endpoint += `https://api.icndb.com/jokes/random?firstName=${state.firstName}&lastName=${state.lastName}&limitTo=[${state.category}]`
+  }
 
   async function fetchData() {
     const res = await fetch(endpoint)
@@ -90,9 +100,16 @@ const ContextProvider: React.FC = ({ children }) => {
         categories: state.categories,
         category: state.category,
         name: state.name,
-        getCategory: (e) =>
-          dispatch({ type: 'GET_CATEGORY', payload: e.target.value }),
-        getName: (e) => dispatch({ type: 'GET_NAME', payload: e.target.value }),
+        firstName: state.firstName,
+        lastName: state.lastName,
+        getCategory: (e) => {
+          dispatch({ type: 'GET_CATEGORY', payload: e.target.value })
+        },
+        getName: (e) =>
+          dispatch({
+            type: 'GET_NAME',
+            payload: e.target.value,
+          }),
         dispatch,
         onSubmitJoke: (e) => {
           e.preventDefault()

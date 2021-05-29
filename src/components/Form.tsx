@@ -15,12 +15,13 @@ const FormInput = styled.input`
   font-style: normal;
   line-height: 1.63;
   letter-spacing: -0.52px;
-  color: gray-1;
-  width: 439px;
+  color: #c4c4c4;
   height: 58px;
-  border: solid 1px gray-1;
+  border: solid 1px #c4c4c4;
   background-color: white;
   width: 100%;
+  pading: 0;
+  margin: 16px 0 32px;
 `
 
 const FormSelect = styled.select`
@@ -31,12 +32,12 @@ const FormSelect = styled.select`
   font-style: normal;
   line-height: 1.63;
   letter-spacing: -0.52px;
-  color: gray-1;
-  width: 439px;
+  color: #c4c4c4;
   height: 58px;
-  border: solid 1px gray-1;
+  border: solid 1px #c4c4c4;
   background-color: white;
   width: 100%;
+  margin: 32px 0 16px;
 `
 
 const Button = styled.button`
@@ -48,12 +49,9 @@ const Button = styled.button`
   line-height: 1.63;
   letter-spacing: -0.52px;
   color: white;
-  width: 439px;
   height: 58px;
-  margin: 32px 0 52px;
-  padding: 16.8px 93.4px 15.2px 93.4px;
   border-radius: 6px;
-  background-color: black;
+  background-color: #34394f;
   border: 0;
   width: 100%;
 `
