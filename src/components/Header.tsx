@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '../Context'
 import styled from 'styled-components'
-import Form from './Form'
-import image from '../chuck-norris.png'
+import chuckNorris from '../assets/chuck-norris.png'
+import randomPhoto from '../assets/random-photo.jpg'
 
 const Joke = styled.h2`
   font-family: 'Inter';
@@ -23,20 +23,18 @@ const Image = styled.img`
 
 const Header = () => {
   const { isLoading, jokes } = useContext(GlobalContext)
-  console.log(jokes)
 
   return (
-    <div>
+    <>
       {isLoading && <h1>Loading the data</h1>}
-      <Image src={image} alt='Chuck Norris' />
+      <Image src={chuckNorris} alt='Chuck Norris' />
       {!isLoading &&
         jokes.map((item) => (
           <Joke key={item.id}>
             <q dangerouslySetInnerHTML={{ __html: item.joke }} />
           </Joke>
         ))}
-      <Form />
-    </div>
+    </>
   )
 }
 

@@ -20,7 +20,7 @@ const FormInput = styled.input`
   border: solid 1px #c4c4c4;
   background-color: white;
   width: 100%;
-  pading: 0;
+  padding: 0;
   margin: 16px 0 32px;
 `
 

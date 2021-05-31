@@ -2,6 +2,8 @@ import React from 'react'
 import Header from './components/Header'
 import ContextProvider from './Context'
 import styled from 'styled-components'
+import Form from './components/Form'
+import SaveJokes from './components/SaveJokes'
 
 const AppStyle = styled.div`
   max-width: 555px;
@@ -19,6 +21,8 @@ const App = () => {
     <ContextProvider>
       <AppStyle>
         <Header />
+        <Form />
+        <SaveJokes />
       </AppStyle>
     </ContextProvider>
   )

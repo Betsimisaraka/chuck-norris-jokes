@@ -1,77 +1,20 @@
 import React, { createContext, useEffect, useReducer } from 'react'
-
-type ValueType = {
-  id: number
-  joke: string
-  categories: []
-}
-
-type State = {
-  isLoading: boolean
-  jokes: ValueType[]
-  categories: string[]
-  category: string
-  name: string
-  firstName: string
-  lastName: string
-  dispatch: React.Dispatch<any>
-  getCategory: (e: React.ChangeEvent<HTMLSelectElement>) => void
-  getName: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onSubmitJoke: (e: React.FormEvent<HTMLFormElement>) => void
-}
-type Action =
-  | { type: 'GET_JOKES'; payload: ValueType[] }
-  | { type: 'GET_CATEGORIES'; payload: string[] }
-  | { type: 'GET_CATEGORY'; payload: string }
-  | { type: 'GET_NAME'; payload: string }
-
-const initialState: State = {
-  isLoading: true,
-  jokes: [],
-  categories: [],
-  category: '',
-  name: '',
-  firstName: 'Chuck',
-  lastName: 'Norris',
-  dispatch: () => {},
-  getCategory: () => {},
-  getName: () => {},
-  onSubmitJoke: () => {},
-}
+import { reducer } from '../src/utils/Reducers'
+import { initialState } from '../src/utils/InitialState'
 
 export const GlobalContext = createContext(initialState)
-
-function reducer(state: State = initialState, action: Action) {
-  switch (action.type) {
-    case 'GET_JOKES':
-      return { ...state, isLoading: false, jokes: action.payload }
-    case 'GET_CATEGORIES':
-      return { ...state, isLoading: false, categories: action.payload }
-    case 'GET_CATEGORY':
-      return { ...state, isLoading: false, category: action.payload }
-    case 'GET_NAME':
-      return {
-        ...state,
-        isLoading: false,
-        name: action.payload,
-        firstName: action.payload.split(' ')[0],
-        lastName: action.payload.split(' ')[1],
-      }
-
-    default:
-      return state
-  }
-}
 
 const ContextProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const categoriesEndpoint = 'http://api.icndb.com/categories'
   let endpoint = ''
   if (state.category === '') {
-    endpoint += `https://api.icndb.com/jokes/random?firstName=${state.firstName}&lastName=${state.lastName}`
+    endpoint += `https://api.icndb.com/jokes/random?firstName=${state.firstName}&lastName=${state.lastName}&escape=javascript`
   } else {
-    endpoint += `https://api.icndb.com/jokes/random?firstName=${state.firstName}&lastName=${state.lastName}&limitTo=[${state.category}]`
+    endpoint += `https://api.icndb.com/jokes/random?firstName=${state.firstName}&lastName=${state.lastName}&escape=javascript&limitTo=[${state.category}]`
   }
+
+  const multiJokes = `http://api.icndb.com/jokes/random/${state.savedJoke}`
 
   async function fetchData() {
     const res = await fetch(endpoint)
@@ -87,9 +30,16 @@ const ContextProvider: React.FC = ({ children }) => {
     dispatch({ type: 'GET_CATEGORIES', payload: data })
   }
 
+  async function fetchSavedJokes() {
+    const res = await fetch(multiJokes)
+    const result = await res.json()
+    dispatch({ type: 'GET_SAVED_JOKES', payload: result })
+  }
+
   useEffect(() => {
     fetchData()
     fetchCategories()
+    fetchSavedJokes()
   }, [])
 
   return (
@@ -102,6 +52,8 @@ const ContextProvider: React.FC = ({ children }) => {
         name: state.name,
         firstName: state.firstName,
         lastName: state.lastName,
+        savedJoke: state.savedJoke,
+        savedJokeArray: state.savedJokeArray,
         getCategory: (e) => {
           dispatch({ type: 'GET_CATEGORY', payload: e.target.value })
         },
@@ -114,6 +66,19 @@ const ContextProvider: React.FC = ({ children }) => {
         onSubmitJoke: (e) => {
           e.preventDefault()
           fetchData()
+        },
+        savedJokeInput: (e) =>
+          dispatch({ type: 'SAVE_JOKES', payload: Number(e.target.value) }),
+        addSavedJoke: () => dispatch({ type: 'ADD_SAVED_JOKES' }),
+        removeSavedJoke: () => {
+          if (state.savedJoke > 0) {
+            dispatch({ type: 'REMOVE_SAVED_JOKES' })
+          } else {
+            return null
+          }
+        },
+        getSavedJoke: () => {
+          fetchSavedJokes()
         },
       }}>
       {children}
