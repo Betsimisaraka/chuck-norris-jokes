@@ -6,7 +6,6 @@ import randomPhoto from '../assets/random-photo.jpg'
 
 const Header = () => {
   const { isLoading, jokes, isClicked } = useContext(GlobalContext)
-  console.log(jokes)
 
   return (
     <>

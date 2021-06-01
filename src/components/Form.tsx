@@ -25,9 +25,6 @@ const Form = ({}) => {
     onOptionClicked,
   } = useContext(GlobalContext)
 
-  console.log(firstName, lastName)
-  console.log(selectedOption)
-
   return (
     <FormFeild className='form' onSubmit={onSubmitJoke}>
       <DropDownContainer>

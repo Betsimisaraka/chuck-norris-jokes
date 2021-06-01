@@ -2,12 +2,12 @@ import styled from 'styled-components'
 
 export const AppStyle = styled.div`
   max-width: 555px;
-  height: 704px;
   border-radius: 8px;
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
   background-color: white;
   margin-left: auto;
   margin-right: auto;
+  font-family: 'Inter', sans-serif;
 `
 
 export const ContainerStyle = styled.div`
@@ -28,6 +28,7 @@ export const Joke = styled.h2`
 
 export const Image = styled.img`
   width: 100%;
+  height: 130px;
   object-fit: contain;
 `
 
@@ -58,6 +59,18 @@ export const SaveJoke = styled.div`
   display: flex;
   margin: 52px 0 0;
   justify-content: space-between;
+  .savedjoked {
+    background-color: #34394f;
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.63;
+    letter-spacing: -0.52px;
+    text-align: center;
+    color: #ffffff;
+  }
 `
 
 export const SavejokeBtn = styled.button`
@@ -85,6 +98,15 @@ export const LabelInput = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  .addJoke {
+    width: 24px;
+    height: 24px;
+    border: none;
+    color: #34394f;
+    background-color: #bdbdbd;
+    border-radius: 50%;
+    padding: 5px 5px 10.1px 5px;
+  }
 `
 
 export const InputNumber = styled.input`
@@ -109,20 +131,8 @@ export const InputNumber = styled.input`
 `
 
 export const AddRemoveBtn = styled.button`
-  font-family: 'Inter';
-  font-size: 18px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.44;
-  letter-spacing: -0.52px;
-  color: #34394f;
-  border: 1px solid #34394f;
   background-color: transparent;
-  width: 24px;
-  border-radius: 50%;
-  padding: 0;
-  margin: 0;
+  border: none;
 `
 
 export const LabelPlaceholder = styled.label`
