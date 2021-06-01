@@ -40,6 +40,7 @@ const ContextProvider: React.FC = ({ children }) => {
     fetchData()
     fetchCategories()
     fetchSavedJokes()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

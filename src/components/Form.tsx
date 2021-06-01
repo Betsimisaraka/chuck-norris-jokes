@@ -11,7 +11,7 @@ import {
   ListItem,
 } from '../styles/styles'
 
-const Form = ({}) => {
+const Form = () => {
   const {
     categories,
     onSubmitJoke,
