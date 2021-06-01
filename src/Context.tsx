@@ -14,7 +14,7 @@ const ContextProvider: React.FC = ({ children }) => {
     endpoint += `https://api.icndb.com/jokes/random?firstName=${state.firstName}&lastName=${state.lastName}&escape=javascript&limitTo=[${state.selectedOption}]`
   }
 
-  const multiJokes = `http://api.icndb.com/jokes/random/${state.savedJoke}`
+  const multiJokes = `https://api.icndb.com/jokes/random/${state.savedJoke}`
 
   async function fetchData() {
     const res = await fetch(endpoint)
