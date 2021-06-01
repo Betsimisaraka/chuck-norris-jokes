@@ -8,10 +8,10 @@ const ContextProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const categoriesEndpoint = 'http://api.icndb.com/categories'
   let endpoint = ''
-  if (state.category === '') {
+  if (state.selectedOption === '') {
     endpoint += `https://api.icndb.com/jokes/random?firstName=${state.firstName}&lastName=${state.lastName}&escape=javascript`
   } else {
-    endpoint += `https://api.icndb.com/jokes/random?firstName=${state.firstName}&lastName=${state.lastName}&escape=javascript&limitTo=[${state.category}]`
+    endpoint += `https://api.icndb.com/jokes/random?firstName=${state.firstName}&lastName=${state.lastName}&escape=javascript&limitTo=[${state.selectedOption}]`
   }
 
   const multiJokes = `http://api.icndb.com/jokes/random/${state.savedJoke}`
@@ -54,9 +54,9 @@ const ContextProvider: React.FC = ({ children }) => {
         lastName: state.lastName,
         savedJoke: state.savedJoke,
         savedJokeArray: state.savedJokeArray,
-        getCategory: (e) => {
-          dispatch({ type: 'GET_CATEGORY', payload: e.target.value })
-        },
+        isClicked: state.isClicked,
+        isOpen: state.isOpen,
+        selectedOption: state.selectedOption,
         getName: (e) =>
           dispatch({
             type: 'GET_NAME',
@@ -66,6 +66,7 @@ const ContextProvider: React.FC = ({ children }) => {
         onSubmitJoke: (e) => {
           e.preventDefault()
           fetchData()
+          dispatch({ type: 'IS_CLICKED', payload: true })
         },
         savedJokeInput: (e) =>
           dispatch({ type: 'SAVE_JOKES', payload: Number(e.target.value) }),
@@ -79,6 +80,13 @@ const ContextProvider: React.FC = ({ children }) => {
         },
         getSavedJoke: () => {
           fetchSavedJokes()
+        },
+        toggling: () => {
+          dispatch({ type: 'IS_OPEN', payload: !state.isOpen })
+        },
+        onOptionClicked: (value) => {
+          dispatch({ type: 'SELECTED_OPTION', payload: value })
+          dispatch({ type: 'IS_OPEN', payload: false })
         },
       }}>
       {children}

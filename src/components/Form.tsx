@@ -1,96 +1,77 @@
 import React, { useContext } from 'react'
-import styled from 'styled-components'
 import { GlobalContext } from '../Context'
+import {
+  FormFeild,
+  Button,
+  LabelPlaceholder,
+  DropDownContainer,
+  DropDownHeader,
+  DropDownListContainer,
+  DropDownList,
+  ListItem,
+} from '../styles/styles'
 
-const FormFeild = styled.form`
-  display: flex;
-  flex-direction: column;
-`
+const Form = ({}) => {
+  const {
+    categories,
+    onSubmitJoke,
+    name,
+    getName,
+    firstName,
+    lastName,
+    isOpen,
+    selectedOption,
+    toggling,
+    onOptionClicked,
+  } = useContext(GlobalContext)
 
-const FormInput = styled.input`
-  font-family: 'Inter';
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.63;
-  letter-spacing: -0.52px;
-  color: #c4c4c4;
-  height: 58px;
-  border: solid 1px #c4c4c4;
-  background-color: white;
-  width: 100%;
-  padding: 0;
-  margin: 16px 0 32px;
-`
-
-const FormSelect = styled.select`
-  font-family: 'Inter';
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.63;
-  letter-spacing: -0.52px;
-  color: #c4c4c4;
-  height: 58px;
-  border: solid 1px #c4c4c4;
-  background-color: white;
-  width: 100%;
-  margin: 32px 0 16px;
-`
-
-const Button = styled.button`
-  font-family: 'Inter';
-  font-size: 16px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.63;
-  letter-spacing: -0.52px;
-  color: white;
-  height: 58px;
-  border-radius: 6px;
-  background-color: #34394f;
-  border: 0;
-  width: 100%;
-`
-
-const Form = () => {
-  const { categories, onSubmitJoke, getCategory, name, getName } =
-    useContext(GlobalContext)
+  console.log(firstName, lastName)
+  console.log(selectedOption)
 
   return (
     <FormFeild className='form' onSubmit={onSubmitJoke}>
-      <label className='form__label' htmlFor='jokeCategories'>
-        <FormSelect
-          name='categories'
-          id='jokeCategories'
-          onChange={getCategory}>
-          <option value='' hidden>
-            Category
-          </option>
-          {categories.map((item, index) => (
-            <option key={index} value={item}>
-              {item}
-            </option>
-          ))}
-        </FormSelect>
-      </label>
-      <label className='form__label' htmlFor='fullname'>
-        <FormInput
+      <DropDownContainer>
+        <DropDownHeader
+          onClick={toggling}
+          className={isOpen ? 'focused' : 'notfocused'}>
+          <span className={selectedOption ? 'options' : 'notOptions'}>
+            {isOpen
+              ? selectedOption || 'Select category'
+              : selectedOption || 'Category'}
+          </span>
+          <svg viewBox='0 0 24 24'>
+            <path d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'></path>
+          </svg>
+        </DropDownHeader>
+        {isOpen && (
+          <DropDownListContainer>
+            <DropDownList>
+              {categories.map((item) => (
+                <ListItem
+                  onClick={() => onOptionClicked(item)}
+                  key={Math.random()}>
+                  {item}
+                </ListItem>
+              ))}
+            </DropDownList>
+          </DropDownListContainer>
+        )}
+      </DropDownContainer>
+      <LabelPlaceholder className='form__label' htmlFor='fullname'>
+        <input
           className='form__input'
           type='text'
           id='fullname'
           value={name}
           onChange={getName}
-          placeholder='Impersonate Chuck Norris'
+          autoComplete='off'
         />
-      </label>
+        <span>Impersonate Chuck Norris</span>
+      </LabelPlaceholder>
       <Button className='form__button'>
-        {name === ''
-          ? 'Draw a random Chuck Norris Joke'
-          : `Draw a random ${name} Joke`}
+        {name !== ''
+          ? `Draw a random ${firstName} ${lastName} Joke`
+          : `Draw a random ${firstName} ${lastName} Joke`}
       </Button>
     </FormFeild>
   )
