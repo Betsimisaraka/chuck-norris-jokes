@@ -63,7 +63,9 @@ const Form = () => {
           onChange={getName}
           autoComplete='off'
         />
-        <span>Impersonate Chuck Norris</span>
+        <span className={name !== '' ? 'stayup' : 'staydown'}>
+          Impersonate Chuck Norris
+        </span>
       </LabelPlaceholder>
       <Button className='form__button'>
         {name !== ''

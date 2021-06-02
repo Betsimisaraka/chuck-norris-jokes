@@ -180,18 +180,13 @@ export const LabelPlaceholder = styled.label`
   }
   & input,
   & span {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
-    -webkit-transition: all 0.2s;
     transition: all 0.2s;
-    -webkit-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
     transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
   }
-  & input:focus + span {
+  & input:focus + span,
+  .stayup {
     top: 8px;
-    -webkit-transform: translateY(-10%) translateX(-8.5px);
     transform: translateY(-10%) translateX(-8.5px);
     font-family: 'Inter';
     font-size: 12px;
