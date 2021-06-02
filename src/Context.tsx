@@ -9,6 +9,7 @@ const ContextProvider: React.FC = ({ children }) => {
   const categoriesEndpoint = 'https://api.icndb.com/categories'
   const getFirstname = state.firstName ? state.firstName : 'Chuck'
   const getLastName = state.lastName ? state.lastName : 'Norris'
+
   let endpoint = ''
   if (state.selectedOption === '') {
     endpoint += `https://api.icndb.com/jokes/random?firstName=${getFirstname}&lastName=${getLastName}&escape=javascript`

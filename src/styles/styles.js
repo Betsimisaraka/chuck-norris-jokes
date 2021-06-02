@@ -43,8 +43,10 @@ export const Joke = styled.h2`
 
 export const Image = styled.img`
   width: 100%;
-  height: 130px;
   object-fit: contain;
+  @media (min-width: 480px) {
+    height: 130px;
+  }
 `
 
 export const FormFeild = styled.form`
