@@ -11,7 +11,10 @@ export const AppStyle = styled.div`
 `
 
 export const ContainerStyle = styled.div`
-  padding: 48px 58px 72px;
+  padding: 48px 20px 72px;
+  @media (min-width: 480px) {
+    padding: 48px 58px 72px;
+  }
 `
 
 export const Joke = styled.h2`
@@ -57,6 +60,7 @@ export const Button = styled.button`
 
 export const SaveJoke = styled.div`
   display: flex;
+  flex-direction: column;
   margin: 52px 0 0;
   justify-content: space-between;
   .savedjoked {
@@ -71,6 +75,9 @@ export const SaveJoke = styled.div`
     text-align: center;
     color: #ffffff;
   }
+  @media (min-width: 480px) {
+    flex-direction: row;
+  }
 `
 
 export const SavejokeBtn = styled.button`
@@ -83,15 +90,19 @@ export const SavejokeBtn = styled.button`
   letter-spacing: -0.52px;
   text-align: center;
   color: #34394f;
-  width: 285px;
+  width: 100%;
   height: 58px;
   border-radius: 6px;
   background-color: #f5f6f8;
   border: none;
+  @media (min-width: 480px) {
+    width: 285px;
+  }
 `
 
 export const LabelInput = styled.div`
-  width: 146px;
+  width: 100%;
+  margin-bottom: 24px;
   height: 58px;
   border-radius: 6px;
   background-color: #f5f6f8;
@@ -106,6 +117,10 @@ export const LabelInput = styled.div`
     background-color: #bdbdbd;
     border-radius: 50%;
     padding: 5px 5px 10.1px 5px;
+  }
+  @media (min-width: 480px) {
+    width: 146px;
+    margin-bottom: unset;
   }
 `
 
