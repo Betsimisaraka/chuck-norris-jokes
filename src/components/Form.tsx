@@ -24,14 +24,15 @@ const Form = () => {
     toggling,
     onOptionClicked,
   } = useContext(GlobalContext)
-  console.log(lastName, firstName)
 
   return (
     <FormFeild className='form' onSubmit={onSubmitJoke}>
       <DropDownContainer>
         <DropDownHeader
           onClick={toggling}
-          className={isOpen ? 'focused' : 'notfocused'}>
+          className={
+            isOpen ? 'focused' : selectedOption ? 'optionSlected' : 'notfocused'
+          }>
           <span className={selectedOption ? 'options' : 'notOptions'}>
             {isOpen
               ? selectedOption || 'Select category'
@@ -55,7 +56,9 @@ const Form = () => {
           </DropDownListContainer>
         )}
       </DropDownContainer>
-      <LabelPlaceholder className='form__label' htmlFor='fullname'>
+      <LabelPlaceholder
+        className={name !== '' ? 'addBorder' : 'removeBorder'}
+        htmlFor='fullname'>
         <input
           className='form__input'
           type='text'

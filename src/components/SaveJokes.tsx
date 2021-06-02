@@ -15,6 +15,7 @@ const SaveJokes = () => {
     addSavedJoke,
     removeSavedJoke,
     getSavedJoke,
+    disabled,
   } = useContext(GlobalContext)
 
   return (
@@ -95,6 +96,7 @@ const SaveJokes = () => {
         </AddRemoveBtn>
       </LabelInput>
       <SavejokeBtn
+        disabled={savedJoke > 0 ? true : false}
         className={savedJoke > 0 ? 'savedjoked' : 'notsavedJoke'}
         onClick={getSavedJoke}>
         Save Jokes

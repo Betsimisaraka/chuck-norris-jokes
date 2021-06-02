@@ -19,6 +19,7 @@ export type State = {
   isClicked: boolean
   isOpen: boolean
   selectedOption: string
+  disabled: boolean
   dispatch: React.Dispatch<any>
   getName: (e: React.ChangeEvent<HTMLInputElement>) => void
   onSubmitJoke: (e: React.FormEvent<HTMLFormElement>) => void
@@ -41,3 +42,4 @@ export type Action =
   | { type: 'IS_CLICKED'; payload: boolean }
   | { type: 'IS_OPEN'; payload: boolean }
   | { type: 'SELECTED_OPTION'; payload: string }
+  | { type: 'DISABLED'; payload: boolean }

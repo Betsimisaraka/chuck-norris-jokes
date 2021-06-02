@@ -13,6 +13,7 @@ export const initialState: State = {
   isClicked: false,
   isOpen: false,
   selectedOption: '',
+  disabled: false,
   dispatch: () => {},
   getName: () => {},
   onSubmitJoke: () => {},

@@ -60,6 +60,7 @@ const ContextProvider: React.FC = ({ children }) => {
         isClicked: state.isClicked,
         isOpen: state.isOpen,
         selectedOption: state.selectedOption,
+        disabled: state.disabled,
         getName: (e) => {
           dispatch({
             type: 'GET_NAME',
@@ -85,6 +86,10 @@ const ContextProvider: React.FC = ({ children }) => {
         },
         getSavedJoke: () => {
           fetchSavedJokes()
+          dispatch({
+            type: 'DISABLED',
+            payload: true,
+          })
         },
         toggling: () => {
           dispatch({ type: 'IS_OPEN', payload: !state.isOpen })

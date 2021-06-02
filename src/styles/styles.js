@@ -50,6 +50,9 @@ export const Image = styled.img`
 export const FormFeild = styled.form`
   display: flex;
   flex-direction: column;
+  .addBorder {
+    border: solid 2px black;
+  }
 `
 
 export const Options = styled.option``
@@ -86,6 +89,7 @@ export const SaveJoke = styled.div`
     line-height: 1.63;
     letter-spacing: -0.52px;
     text-align: center;
+    cursor: pointer;
     color: #ffffff;
   }
   @media (min-width: 480px) {
@@ -108,7 +112,7 @@ export const SavejokeBtn = styled.button`
   border-radius: 6px;
   background-color: #f5f6f8;
   border: none;
-  cursor: pointer;
+  cursor: not-allowed;
   @media (min-width: 480px) {
     width: 285px;
   }
@@ -252,6 +256,9 @@ export const DropDownContainer = styled.div`
   }
   & .notfocused {
     border: solid 2px #c4c4c4;
+  }
+  .optionSlected {
+    border: solid 2px black;
   }
 `
 
