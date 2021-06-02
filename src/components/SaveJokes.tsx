@@ -15,7 +15,8 @@ const SaveJokes = () => {
     addSavedJoke,
     removeSavedJoke,
     getSavedJoke,
-    disabled,
+    savedJokeArray,
+    // downloadLink,
   } = useContext(GlobalContext)
 
   return (

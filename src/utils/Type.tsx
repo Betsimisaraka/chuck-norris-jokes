@@ -15,11 +15,11 @@ export type State = {
   firstName: string
   lastName: string
   savedJoke: number
-  savedJokeArray: string
+  savedJokeArray: string[]
   isClicked: boolean
   isOpen: boolean
   selectedOption: string
-  disabled: boolean
+  // downloadLink: string
   dispatch: React.Dispatch<any>
   getName: (e: React.ChangeEvent<HTMLInputElement>) => void
   onSubmitJoke: (e: React.FormEvent<HTMLFormElement>) => void
@@ -38,8 +38,8 @@ export type Action =
   | { type: 'SAVE_JOKES'; payload: number }
   | { type: 'ADD_SAVED_JOKES' }
   | { type: 'REMOVE_SAVED_JOKES' }
-  | { type: 'GET_SAVED_JOKES'; payload: string }
+  | { type: 'GET_SAVED_JOKES'; payload: string[] }
   | { type: 'IS_CLICKED'; payload: boolean }
   | { type: 'IS_OPEN'; payload: boolean }
   | { type: 'SELECTED_OPTION'; payload: string }
-  | { type: 'DISABLED'; payload: boolean }
+// | { type: 'DOWNLOAD_LINK'; payload: string }

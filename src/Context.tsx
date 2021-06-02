@@ -35,7 +35,7 @@ const ContextProvider: React.FC = ({ children }) => {
   async function fetchSavedJokes() {
     const res = await fetch(multiJokes)
     const result = await res.json()
-    dispatch({ type: 'GET_SAVED_JOKES', payload: result })
+    dispatch({ type: 'GET_SAVED_JOKES', payload: result.value })
   }
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const ContextProvider: React.FC = ({ children }) => {
         isClicked: state.isClicked,
         isOpen: state.isOpen,
         selectedOption: state.selectedOption,
-        disabled: state.disabled,
+        // downloadLink: state.downloadLink,
         getName: (e) => {
           dispatch({
             type: 'GET_NAME',
@@ -86,10 +86,6 @@ const ContextProvider: React.FC = ({ children }) => {
         },
         getSavedJoke: () => {
           fetchSavedJokes()
-          dispatch({
-            type: 'DISABLED',
-            payload: true,
-          })
         },
         toggling: () => {
           dispatch({ type: 'IS_OPEN', payload: !state.isOpen })

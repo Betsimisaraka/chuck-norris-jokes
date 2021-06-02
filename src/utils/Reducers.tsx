@@ -36,6 +36,9 @@ export function reducer(state: State = initialState, action: Action) {
     case 'SELECTED_OPTION': {
       return { ...state, selectedOption: action.payload }
     }
+    // case 'DOWNLOAD_LINK': {
+    //   return { ...state, downloadLink: action.payload }
+    // }
     default:
       return state
   }
