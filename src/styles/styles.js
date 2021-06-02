@@ -227,6 +227,7 @@ export const LabelPlaceholder = styled.label`
 export const DropDownContainer = styled.div`
   position: relative;
   width: 100%;
+  height: 62px;
   margin: 0 auto;
   & .focused {
     border-top: solid 2px #c4c4c4;
