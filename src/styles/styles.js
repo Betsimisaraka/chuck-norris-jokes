@@ -141,10 +141,11 @@ export const InputNumber = styled.input`
   font-style: normal;
   line-height: 1.44;
   letter-spacing: -0.52px;
+  text-align: center;
   color: #34394f;
   border: none;
   background-color: transparent;
-  width: 10px;
+  width: 30px;
 `
 
 export const AddRemoveBtn = styled.button`
