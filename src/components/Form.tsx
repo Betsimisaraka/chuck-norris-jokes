@@ -73,9 +73,7 @@ const Form = () => {
           ? `Draw a random ${firstName ? firstName : 'Chuck'} ${
               lastName ? lastName : 'Norris'
             } Joke`
-          : `Draw a random ${firstName ? firstName : 'Chuck'} ${
-              lastName ? lastName : 'Norris'
-            } Joke`}
+          : `Draw a random ${name} Joke`}
       </Button>
     </FormFeild>
   )
