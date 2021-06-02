@@ -60,7 +60,6 @@ const ContextProvider: React.FC = ({ children }) => {
         isClicked: state.isClicked,
         isOpen: state.isOpen,
         selectedOption: state.selectedOption,
-        // downloadLink: state.downloadLink,
         getName: (e) => {
           dispatch({
             type: 'GET_NAME',

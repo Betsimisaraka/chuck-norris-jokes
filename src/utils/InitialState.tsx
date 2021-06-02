@@ -13,7 +13,6 @@ export const initialState: State = {
   isClicked: false,
   isOpen: false,
   selectedOption: '',
-  // downloadLink: '',
   dispatch: () => {},
   getName: () => {},
   onSubmitJoke: () => {},
