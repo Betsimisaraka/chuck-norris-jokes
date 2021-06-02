@@ -52,6 +52,7 @@ export const Button = styled.button`
   letter-spacing: -0.52px;
   color: white;
   height: 58px;
+  cursor: pointer;
   border-radius: 6px;
   background-color: #34394f;
   border: 0;
@@ -95,6 +96,7 @@ export const SavejokeBtn = styled.button`
   border-radius: 6px;
   background-color: #f5f6f8;
   border: none;
+  cursor: pointer;
   @media (min-width: 480px) {
     width: 285px;
   }
@@ -148,6 +150,7 @@ export const InputNumber = styled.input`
 export const AddRemoveBtn = styled.button`
   background-color: transparent;
   border: none;
+  cursor: pointer;
 `
 
 export const LabelPlaceholder = styled.label`
@@ -319,5 +322,6 @@ export const ListItem = styled.li`
     background: #e9e9e9;
     font-weight: 500;
     opacity: 1;
+    cursor: pointer;
   }
 `
