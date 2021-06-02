@@ -7,11 +7,13 @@ export const GlobalContext = createContext(initialState)
 const ContextProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const categoriesEndpoint = 'https://api.icndb.com/categories'
+  const getFirstname = state.firstName ? state.firstName : 'Chuck'
+  const getLastName = state.lastName ? state.lastName : 'Norris'
   let endpoint = ''
   if (state.selectedOption === '') {
-    endpoint += `https://api.icndb.com/jokes/random?firstName=${state.firstName}&lastName=${state.lastName}&escape=javascript`
+    endpoint += `https://api.icndb.com/jokes/random?firstName=${getFirstname}&lastName=${getLastName}&escape=javascript`
   } else {
-    endpoint += `https://api.icndb.com/jokes/random?firstName=${state.firstName}&lastName=${state.lastName}&escape=javascript&limitTo=[${state.selectedOption}]`
+    endpoint += `https://api.icndb.com/jokes/random?firstName=${getFirstname}&lastName=${getLastName}&escape=javascript&limitTo=[${state.selectedOption}]`
   }
 
   const multiJokes = `https://api.icndb.com/jokes/random/${state.savedJoke}`

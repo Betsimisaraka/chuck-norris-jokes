@@ -24,6 +24,7 @@ const Form = () => {
     toggling,
     onOptionClicked,
   } = useContext(GlobalContext)
+  console.log(lastName, firstName)
 
   return (
     <FormFeild className='form' onSubmit={onSubmitJoke}>
@@ -68,9 +69,13 @@ const Form = () => {
         </span>
       </LabelPlaceholder>
       <Button className='form__button'>
-        {name !== ''
-          ? `Draw a random ${firstName} ${lastName} Joke`
-          : `Draw a random ${firstName} ${lastName} Joke`}
+        {name === ''
+          ? `Draw a random ${firstName ? firstName : 'Chuck'} ${
+              lastName ? lastName : 'Norris'
+            } Joke`
+          : `Draw a random ${firstName ? firstName : 'Chuck'} ${
+              lastName ? lastName : 'Norris'
+            } Joke`}
       </Button>
     </FormFeild>
   )
