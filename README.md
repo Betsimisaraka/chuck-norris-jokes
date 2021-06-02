@@ -36,7 +36,7 @@ Every time the "Impersonate Chuck Norris" input field value changed the text in 
 
 ### How to use
 
-To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) and [parcel bundler](https://parceljs.org/getting_started.html) installed on your computer. Or you can run this with a live server. From your command line:
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. Or you can run this with a live server. From your command line:
 
 ```bash
 # Clone this repository
