@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '../Context'
-import { Joke, Image } from '../styles/styles'
+import { Joke, Image, Loading } from '../styles/styles'
 import chuckNorris from '../assets/chuck-norris.png'
 import randomPhoto from '../assets/random-photo.jpg'
 
@@ -19,7 +19,7 @@ const Header = () => {
         <Image src={chuckNorris} alt='Chuck Norris' />
       )}
       {isLoading ? (
-        <h1>Loading...</h1>
+        <Loading>Loading...</Loading>
       ) : (
         jokes.map((item) => (
           <Joke key={item.id}>

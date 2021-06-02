@@ -6,37 +6,35 @@ export function reducer(state: State = initialState, action: Action) {
     case 'GET_JOKES':
       return { ...state, isLoading: false, jokes: action.payload }
     case 'GET_CATEGORIES':
-      return { ...state, isLoading: false, categories: action.payload }
+      return { ...state, categories: action.payload }
     case 'GET_NAME':
       return {
         ...state,
-        isLoading: false,
         name: action.payload,
         firstName: action.payload.split(' ')[0],
         lastName: action.payload.split(' ')[1],
       }
     case 'SAVE_JOKES':
-      return { ...state, isLoading: false, savedJoke: action.payload }
+      return { ...state, savedJoke: action.payload }
     case 'ADD_SAVED_JOKES':
-      return { ...state, isLoading: false, savedJoke: state.savedJoke + 1 }
+      return { ...state, savedJoke: state.savedJoke + 1 }
     case 'REMOVE_SAVED_JOKES': {
-      return { ...state, isLoading: false, savedJoke: state.savedJoke - 1 }
+      return { ...state, savedJoke: state.savedJoke - 1 }
     }
     case 'GET_SAVED_JOKES': {
       return {
         ...state,
-        isLoading: false,
         savedJokeArray: action.payload,
       }
     }
     case 'IS_CLICKED': {
-      return { ...state, isLoading: false, isClicked: action.payload }
+      return { ...state, isClicked: action.payload }
     }
     case 'IS_OPEN': {
-      return { ...state, isLoading: false, isOpen: action.payload }
+      return { ...state, isOpen: action.payload }
     }
     case 'SELECTED_OPTION': {
-      return { ...state, isLoading: false, selectedOption: action.payload }
+      return { ...state, selectedOption: action.payload }
     }
     default:
       return state

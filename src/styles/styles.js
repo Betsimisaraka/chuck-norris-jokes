@@ -10,6 +10,18 @@ export const AppStyle = styled.div`
   font-family: 'Inter', sans-serif;
 `
 
+export const Loading = styled.h1`
+  font-family: 'Inter';
+  font-size: 18px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: noraml;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #34394f;
+  margin: 24px 0 32px;
+`
+
 export const ContainerStyle = styled.div`
   padding: 48px 20px 72px;
   @media (min-width: 480px) {
