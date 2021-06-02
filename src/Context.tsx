@@ -6,7 +6,7 @@ export const GlobalContext = createContext(initialState)
 
 const ContextProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const categoriesEndpoint = 'http://api.icndb.com/categories'
+  const categoriesEndpoint = 'https://api.icndb.com/categories'
   let endpoint = ''
   if (state.selectedOption === '') {
     endpoint += `https://api.icndb.com/jokes/random?firstName=${state.firstName}&lastName=${state.lastName}&escape=javascript`

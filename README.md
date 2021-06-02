@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+## Chuck Norris jokes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">Chuck Norris</h1>
+<div align="center">
+  <h3>
+    <a href="https://github.com/Betsimisaraka/chuck-norris-jokes">
+      Source code
+    </a>
+    <span> | </span>
+    <a href="https://chuck-norris-joke-anita.netlify.app/">
+      Demo
+    </a>
+  </h3>
+</div>
 
-## Available Scripts
+A MoodUp projects that fetch Chuck Norris jokes from an API.
 
-In the project directory, you can run:
+![application-screenshot](./chuck-norris-screenshot.png)
 
-### `yarn start`
+### Build with
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [React](https://reactjs.org/)
+- [HTML5](https://html.org/)
+- [CSS](https://css.org)
+- [Styled-Components](https://styled-components.org)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Functionality
 
-### `yarn test`
+Every time the user access the page there is already a joke that display automaticaly.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+By clicking "Draw a Chuck Norris joke" button the user will fetch another joke which displays randomly.
 
-### `yarn build`
+When the user choose a category from the dropdown and click the "Draw a Chuck Norris joke" button, the will be displayed according to the category that has been chosen.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Every time the "Impersonate Chuck Norris" input field value changed the text in the "Draw a Chuck Norris joke" button dynamically change to "Draw a <input_value> joke". When the user hit the button the new Chuck Norris joke is drawn and all of the "Chuck Norris" in the joke is replaced by the value from the input.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### How to use
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) and [parcel bundler](https://parceljs.org/getting_started.html) installed on your computer. Or you can run this with a live server. From your command line:
 
-### `yarn eject`
+```bash
+# Clone this repository
+$ git clone https://github.com/Betsimisaraka/chuck-norris-jokes
+# Install dependencies
+$ yarn install
+# Run the app
+$ yarn start
+# Bult the app
+$ yarn build
+# Test
+$ yarn test
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Design
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Design was provided by this [Zeplin](https://app.zeplin.io/project/60082e93b75072b9b22b0d74) file.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Development Notes
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- This project uses 3 React components:
+  - The `Form` component is used to display the form with a select dropdown, an input field and a button.
+  - `Header` component displays the images and the joke.
+  - `SaveJokes` component displays an input with the increament and decreament buttons followed by a save button.
+- Utils is used to store the `InitialSate`, `Reducer` and `Type` to separate the `Context` into smaller pieces.
 
-## Learn More
+- Context API is used to store the state and share every state accross the 3 components.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Contact
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+GitHub [Betsimisaka](https://github.com/Betsimisaraka)
