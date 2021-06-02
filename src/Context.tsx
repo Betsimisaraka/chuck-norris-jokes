@@ -58,11 +58,13 @@ const ContextProvider: React.FC = ({ children }) => {
         isClicked: state.isClicked,
         isOpen: state.isOpen,
         selectedOption: state.selectedOption,
-        getName: (e) =>
+        getName: (e) => {
           dispatch({
             type: 'GET_NAME',
             payload: e.target.value,
-          }),
+          })
+          dispatch({ type: 'IS_CLICKED', payload: false })
+        },
         dispatch,
         onSubmitJoke: (e) => {
           e.preventDefault()

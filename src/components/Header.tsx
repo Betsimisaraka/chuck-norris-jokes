@@ -5,17 +5,21 @@ import chuckNorris from '../assets/chuck-norris.png'
 import randomPhoto from '../assets/random-photo.jpg'
 
 const Header = () => {
-  const { isLoading, jokes, isClicked } = useContext(GlobalContext)
+  const { isLoading, jokes, isClicked, name, firstName, lastName } =
+    useContext(GlobalContext)
 
   return (
     <>
-      {isClicked ? (
+      {isClicked &&
+      name !== '' &&
+      firstName !== 'Chuck' &&
+      lastName !== 'Norris' ? (
         <Image src={randomPhoto} alt='Random photo' />
       ) : (
         <Image src={chuckNorris} alt='Chuck Norris' />
       )}
       {isLoading ? (
-        <h1>Loading the data</h1>
+        <h1>Loading...</h1>
       ) : (
         jokes.map((item) => (
           <Joke key={item.id}>
